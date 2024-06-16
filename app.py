@@ -54,17 +54,33 @@ def plot_arcs(data, num_edges_to_plot=1000):
 # Layout da página
 st.set_page_config(layout="wide")
 
-# Adicionar o fundo da página
+# Adicionar o fundo da página e estilos
 background_image_base64 = get_base64_of_bin_file('background.png')
 page_bg_img = f'''
 <style>
 body {{
     background-image: url("data:image/png;base64,{background_image_base64}");
     background-size: cover;
+    color: white;
 }}
 .stApp {{
     background: url("data:image/png;base64,{background_image_base64}");
     background-size: cover;
+}}
+h1, h2, h3, h4, h5, h6, p, div, span {{
+    color: white !important;
+}}
+footer {{
+    visibility: hidden;
+}}
+.footer {{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    text-align: right;
+    font-size: small;
+    color: white;
 }}
 </style>
 '''
@@ -85,13 +101,19 @@ with col1:
     num_edges_to_plot = st.slider("Número de arestas para plotar ( foi acrescentado para carregar o gráfico de forma mais rápida)", min_value=100, max_value=total_references, value=1000)
     plot_arcs(data, num_edges_to_plot)
 
+    # Adicionar o texto explicativo abaixo do gráfico
+    st.write("""
+    Este gráfico representa as conexões entre diferentes versículos da Bíblia. Cada linha colorida representa uma referência cruzada entre dois versículos.
+    A Bíblia é um texto altamente interconectado, e estas conexões mostram como diferentes partes da escritura se referem e se complementam.
+    """)
+
 with col2:
     # Informações adicionais sobre a Bíblia
     total_books = 66  # Total de livros na Bíblia
     total_verses = 31102  # Aproximadamente o total de versículos na Bíblia
     total_authors = 40  # Aproximadamente o total de autores diferentes
 
-    # Observação relevante
+    # Espaçamento para centralizar o texto
     st.write("")
     st.write("")
     st.write("")
@@ -130,18 +152,6 @@ with col2:
 
 # Rodapé
 st.markdown("""
-    <style>
-        footer {visibility: hidden;}
-        .footer {{
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            width: 100%;
-            text-align: right;
-            font-size: small;
-            color: grey;
-        }}
-    </style>
     <div class="footer">
         by: Lennon Santos
     </div>
