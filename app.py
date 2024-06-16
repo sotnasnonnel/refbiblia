@@ -125,8 +125,6 @@ with col2:
 
     st.write(f"""
     ### A Interconexão da Bíblia:
-    Este gráfico representa as conexões entre diferentes versículos da Bíblia. Cada linha colorida representa uma referência cruzada entre dois versículos. 
-    A Bíblia é um texto altamente interconectado, e estas conexões mostram como diferentes partes da escritura se referem e se complementam.
 
     A Bíblia contém um total de {total_books} livros e aproximadamente {total_verses} versículos. 
     Ela foi escrita por cerca de {total_authors} autores diferentes ao longo de muitos séculos, cobrindo uma vasta gama de temas e histórias.
